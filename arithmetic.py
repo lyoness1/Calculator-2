@@ -27,7 +27,12 @@ def cube(num1):
 
 
 def power(num1, num2):
-    return num1 ** num2  # ** = exponent operator
+    if num2 > 0:
+        return num1 ** num2  # ** = exponent operator
+    elif num2 == 0:
+        return 1
+    else:
+        return 1/(num1 ** num2)
 
 
 def mod(num1, num2):
