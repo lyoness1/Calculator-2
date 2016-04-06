@@ -30,7 +30,7 @@ def read_string():
     if token_list[0] == "cube":
         return cube(int(token_list[1]))
     if token_list[0] == "pow":
-        return power(int(token_list[1]), int(token_list[2]))
+        return power(float(token_list[1]), float(token_list[2]))
     if token_list[0] == "mod":
         return mod(int(token_list[1]), int(token_list[2]))
 
