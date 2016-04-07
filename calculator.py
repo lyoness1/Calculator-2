@@ -14,11 +14,18 @@ from arithmetic import *
 #     tokenize input
 #     if the first token is 'q', quit
 #     otherwise decide which math function to call based on the tokens we read
+def intergerize(str_list):
+    return map(int, str_list)
+
 
 def read_string():
     token_list = raw_input().split()
+    # if token_list[0] == "+":
+    #     return add(int(token_list[1]), int(token_list[2]))
+    # if token_list[0] == "+":
+    #     return add(map(int, token_list[1:]))
     if token_list[0] == "+":
-        return add(int(token_list[1]), int(token_list[2]))
+        return reduce(add, intergerize(token_list[1:]))
     if token_list[0] == "-":
         return subtract(int(token_list[1]), int(token_list[2]))
     if token_list[0] == "*":
@@ -33,5 +40,7 @@ def read_string():
         return power(float(token_list[1]), float(token_list[2]))
     if token_list[0] == "mod":
         return mod(int(token_list[1]), int(token_list[2]))
+    else:
+        print "invalid operation"
 
 print read_string()
