@@ -7,30 +7,21 @@ calculator program yourself in this file.
 
 from arithmetic import *
 
-
-# No setup
-# repeat forever:
-#     read input
-#     tokenize input
-#     if the first token is 'q', quit
-#     otherwise decide which math function to call based on the tokens we read
-
-
 def intergerize(str_list):
     """returns a list of integers from a list of strings"""
     return map(int, str_list)
 
-
 def read_string():
+    """reads the input to determine which function in arithmetic.py to use"""
     token_list = raw_input().split()
-    # original code: 
+#original code: 
     # if token_list[0] == "+":
     #     return add(int(token_list[1]), int(token_list[2]))
-    # code for taking multiple inputs - adjusted in arithmetic.py: 
+#code for taking multiple inputs - adjusted in arithmetic.py: 
     # if token_list[0] == "+":
     #     return add(map(int, token_list[1:]))
     if token_list[0] == "+": # code for using reduce() for multiple nums
-        return reduce(add, intergerize(token_list[1:]))
+        return my_reduce(add, intergerize(token_list[1:]))
     if token_list[0] == "-":
         return subtract(int(token_list[1]), int(token_list[2]))
     if token_list[0] == "*":
@@ -48,7 +39,7 @@ def read_string():
     else:
         print "invalid operation"
 
-# my version of reduce()
+#my version of reduce()
 def my_reduce(func, iterable, initialzer=None):
     if initialzer is not None:
         answer = initialzer
@@ -59,5 +50,5 @@ def my_reduce(func, iterable, initialzer=None):
         answer = func(answer, i)
     return answer
 
-print read_string()
+print "Your answer is {}".format(float(read_string()))
 
